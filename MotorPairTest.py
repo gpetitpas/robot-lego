@@ -12,3 +12,4 @@ pair = MotorPair('A', 'B')
 pair.set_default_speed(70)
 
 pair.run_for_rotations(2)
+print('hi')
