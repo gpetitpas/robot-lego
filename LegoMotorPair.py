@@ -10,6 +10,7 @@ class LegoMotorPair:
 
         atexit.register(self.stop)
 
+    @staticmethod
     def convert_speed(speed):
         if (speed == 0):
             return 0
