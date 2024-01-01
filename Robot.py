@@ -9,8 +9,8 @@ class Robot:
         self.dist_sensor = LegoDistanceSensor('D')
 
 
-    def start(self):
-        self.pair.start()
+    def start(self, left_speed=-70, right_speed=70):
+        self.pair.start(left_speed, right_speed)
 
     def stop(self):
         self.pair.stop()
