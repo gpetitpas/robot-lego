@@ -10,15 +10,23 @@ class Robot:
     def drive_straight(self, seconds):
         self.pair.start()
         time.sleep(seconds)
+        self.pair.stop()
+        time.sleep(0.1)
 
     def turn_left(self):
         self.pair.start(50, 50)
         time.sleep(0.45)
+        self.pair.stop()
+        time.sleep(0.1)
 
     def turn_right(self):
         self.pair.start(-50, -50)
         time.sleep(0.45)
+        self.pair.stop()
+        time.sleep(0.1)
 
     def spin_clockwise(self):
         self.pair.start(-50, -50)
         time.sleep(1.8)
+        self.pair.stop()
+        time.sleep(0.1)
