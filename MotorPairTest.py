@@ -1,4 +1,3 @@
-from buildhat import MotorPair
 import time
 import math
 from Robot import Robot

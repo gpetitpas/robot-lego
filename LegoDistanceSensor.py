@@ -8,7 +8,7 @@ class LegoDistanceSensor:
     def get_distance(self):
         vals = []
         for val in range(3):
-            vals[val] = self.dist_sensor.get_distance()
+            vals.append(self.dist_sensor.get_distance())
             time.sleep(0.05)
         
         sum = 0
