@@ -9,6 +9,12 @@ class Robot:
         self.dist_sensor = LegoDistanceSensor('D')
 
 
+    def start(self):
+        self.pair.start()
+
+    def stop(self):
+        self.pair.stop()
+
     def drive_straight(self, seconds):
         self.pair.start()
         time.sleep(seconds)
