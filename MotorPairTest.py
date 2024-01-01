@@ -22,9 +22,12 @@ def basic_obstacle_avoidance(robot):
             time.sleep(1.5)
             robot.stop()
             robot.spin_clockwise()
+            robot.stop()
+            time.sleep(1)
         else:
             print("forward")
             robot.start()
+        time.sleep(0.1)
 
 def beginner_driving(robot):
     robot.drive_straight(2)
