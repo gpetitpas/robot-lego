@@ -1,10 +1,12 @@
 import time
 
+from LegoDistanceSensor import LegoDistanceSensor
 from LegoMotorPair import LegoMotorPair
 
 class Robot:
     def __init__(self) -> None:
         self.pair = LegoMotorPair('A', 'B', 70)
+        self.dist_sensor = LegoDistanceSensor('D')
 
 
     def drive_straight(self, seconds):

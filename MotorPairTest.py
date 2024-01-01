@@ -9,22 +9,15 @@ from Robot import Robot
 # get diameter of the wheel, program to drive a certain distance forward/backward
 # get width of robot, program to turn in place
 
-# pair = MotorPair('A', 'B')
-# pair.set_default_speed(70)
-
-# pair.run_for_rotations(2)
-# print('hi')
-# pair.start(-70, 70)
-# print('hi')
-# time.sleep(2)
-# pair.stop()
-# print('end')
-
 robot = Robot()
 
-robot.drive_straight(2)
-robot.turn_right()
-robot.turn_left()
-robot.drive_straight(1)
-robot.spin_clockwise()
+while True:
+    print(robot.dist_sensor.get_distance())
+    time.sleep(0.1)
+
+# robot.drive_straight(2)
+# robot.turn_right()
+# robot.turn_left()
+# robot.drive_straight(1)
+# robot.spin_clockwise()
 
