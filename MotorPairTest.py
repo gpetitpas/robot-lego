@@ -1,7 +1,7 @@
 from buildhat import MotorPair
 import time
 import math
-from LegoMotorPair import LegoMotorPair
+from Robot import Robot
 
 # https://buildhat.readthedocs.io/en/latest/buildhat/motor.html
 
@@ -20,11 +20,11 @@ from LegoMotorPair import LegoMotorPair
 # pair.stop()
 # print('end')
 
-pair = LegoMotorPair('A', 'B', 70)
-pair.start()
-print('should convert to')
-time.sleep(2)
-pair.start(-20, 20)
-print('hi 20')
-time.sleep(2)
-print('end')
+robot = Robot()
+
+robot.drive_straight(2)
+robot.turn_right()
+robot.turn_left()
+robot.drive_straight(1)
+robot.spin_clockwise()
+
