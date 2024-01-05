@@ -47,6 +47,7 @@ class Robot:
         # stop when left pos = start left + dist, when right
         while self.left_motor.get_position() > l_target_pos:
             print(self.left_motor.get_position())
+            time.sleep(0.05)
         self.left_motor.stop()
 
 
