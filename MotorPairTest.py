@@ -54,14 +54,15 @@ def check_encoders(robot, logger):
             robot.ticks_to_mm(robot.right_motor.get_position())))
         time.sleep(0.05)
     robot.stop()
-
+  
 
 def main():
-    robot = Robot()
     logger = configure_logging()
     logger.info("Log is working!")
+    robot = Robot()
 
-    check_encoders(robot, logger)
+    robot.drive_distance(180)
+    #check_encoders(robot, logger)
     # basic_obstacle_avoidance(robot=robot)
 
 
