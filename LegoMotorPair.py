@@ -15,10 +15,10 @@ class LegoMotorPair:
         if (speed == 0):
             return 0
         elif (speed > 0):
-            print("Speed is: {}".format(math.floor(speed * 0.6) + 40))
+            # print("Speed is: {}".format(math.floor(speed * 0.6) + 40))
             return math.floor(speed * 0.6) + 40
         else:
-            print("Speed is: {}".format(math.floor(speed * 0.6) - 40))
+            # print("Speed is: {}".format(math.floor(speed * 0.6) - 40))
             return math.floor(speed * 0.6) - 40
 
     def start(self, left_speed=-70, right_speed=70):

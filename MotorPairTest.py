@@ -1,5 +1,7 @@
 import time
 import math
+import logging
+
 from Robot import Robot
 
 # https://buildhat.readthedocs.io/en/latest/buildhat/motor.html
@@ -13,7 +15,10 @@ def basic_obstacle_avoidance(robot):
     while True:
         dist = robot.dist_sensor.get_distance()
         print("dist: {d}".format(d=dist))
-        if dist < 70:
+        if dist == -1:
+            print("pausing")
+            continue
+        elif dist < 70:
             print("reverse")
             robot.stop()
             time.sleep(1)
@@ -35,10 +40,29 @@ def beginner_driving(robot):
     robot.drive_straight(1)
     robot.spin_clockwise()
 
+def configure_logging():
+    logger = logging.getLogger("robot logs")
+    logging.basicConfig(level=logging.INFO)
+    return logger
+
+def check_encoders(robot, logger):
+    stop_time = time.time() + 1
+    robot.start()
+    while time.time() < stop_time:
+        logger.info("Left: {}, Right: {}".format(
+            robot.ticks_to_mm(robot.left_motor.get_position()), 
+            robot.ticks_to_mm(robot.right_motor.get_position())))
+        time.sleep(0.05)
+    robot.stop()
+
 
 def main():
     robot = Robot()
-    basic_obstacle_avoidance(robot=robot)
+    logger = configure_logging()
+    logger.info("Log is working!")
+
+    check_encoders(robot, logger)
+    # basic_obstacle_avoidance(robot=robot)
 
 
 if __name__ == "__main__":

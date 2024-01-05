@@ -1,12 +1,22 @@
+import math
 import time
 
 from LegoDistanceSensor import LegoDistanceSensor
 from LegoMotorPair import LegoMotorPair
+from LegoMotor import LegoMotor
+
+
+wheel_diameter          = 9999 # TODO: update
+ticks_per_revolution    = 360
+ticks_to_mm = (math.pi / ticks_per_revolution) * wheel_diameter
+
 
 class Robot:
     def __init__(self) -> None:
         self.pair = LegoMotorPair('A', 'B', 70)
         self.dist_sensor = LegoDistanceSensor('D')
+        self.left_motor = LegoMotor('A')
+        self.right_motor = LegoMotor('B')
 
 
     def start(self, left_speed=-70, right_speed=70):
@@ -14,6 +24,10 @@ class Robot:
 
     def stop(self):
         self.pair.stop()
+
+    # For encoder ticks, use the output from motor.get_position()
+    def ticks_to_mm(self, encoder_ticks):
+        return int(ticks_to_mm * encoder_ticks)
 
     def drive_straight(self, seconds):
         self.pair.start()
