@@ -1,8 +1,10 @@
 import time
 import math
-import logging
 
 from Robot import Robot
+
+import logging
+logger = logging.getLogger("main")
 
 # https://buildhat.readthedocs.io/en/latest/buildhat/motor.html
 
@@ -40,11 +42,6 @@ def beginner_driving(robot):
     robot.drive_straight(1)
     robot.spin_clockwise()
 
-def configure_logging():
-    logger = logging.getLogger("robot logs")
-    logging.basicConfig(level=logging.INFO)
-    return logger
-
 def check_encoders(robot, logger):
     stop_time = time.time() + 1
     robot.start()
@@ -57,7 +54,7 @@ def check_encoders(robot, logger):
   
 
 def main():
-    logger = configure_logging()
+    logging.basicConfig(level=logging.INFO)
     logger.info("Log is working!")
     # logger has to come first, apparently
     robot = Robot()

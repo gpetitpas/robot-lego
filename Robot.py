@@ -5,6 +5,9 @@ from LegoDistanceSensor import LegoDistanceSensor
 from LegoMotorPair import LegoMotorPair
 from LegoMotor import LegoMotor
 
+import logging
+logger = logging.getLogger("robot")
+
 
 wheel_diameter          = 57 # in millimeters (mm)
 ticks_per_revolution    = 360
@@ -39,13 +42,13 @@ class Robot:
     # This more or less works, although I think the motor is reporting inaccurate encoder measurments while in motion
     def drive_distance(self, distance):
         ticks = distance / ticks_to_mm
-        print("driving for: {} distance, {} ticks".format(distance, ticks))
+        logger.info("driving for: {} distance, {} ticks".format(distance, ticks))
         
         # Get start from left motor and right motor
         # left is moving backward fyi
         l_start_pos = self.left_motor.get_position()
         l_target_pos = l_start_pos - ticks
-        print("target: {}".format(l_target_pos))
+        logger.debug("target: {}".format(l_target_pos))
 
         # start motors
         self.start()
@@ -53,14 +56,9 @@ class Robot:
         # stop when left pos = start left + dist, when right
         while self.left_motor.get_position() > l_target_pos:
             pos = self.left_motor.get_position()
-            print("pos: {}, dist:{}".format(pos, self.ticks_to_mm(pos)))
+            logger.debug("pos: {}, dist:{}".format(pos, self.ticks_to_mm(pos)))
             time.sleep(0.05)
-        self.start(0,0)
-        time.sleep(0.05)
         self.stop()
-        time.sleep(0.1)
-        print("stopped")
-        print(self.left_motor.get_position())
 
     # def drive_straight(self, seconds):
     #     self.pair.start()
