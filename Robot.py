@@ -42,13 +42,13 @@ class Robot:
     # This more or less works, although I think the motor is reporting inaccurate encoder measurments while in motion
     def drive_distance(self, distance):
         ticks = distance / ticks_to_mm
-        logger.info("driving for: {} distance, {} ticks".format(distance, ticks))
+        logger.warn("driving for: {} distance, {} ticks".format(distance, ticks))
         
         # Get start from left motor and right motor
         # left is moving backward fyi
         l_start_pos = self.left_motor.get_position()
         l_target_pos = l_start_pos - ticks
-        logger.debug("target: {}".format(l_target_pos))
+        logger.info("target: {}".format(l_target_pos))
 
         # start motors
         self.start()
@@ -56,7 +56,7 @@ class Robot:
         # stop when left pos = start left + dist, when right
         while self.left_motor.get_position() > l_target_pos:
             pos = self.left_motor.get_position()
-            logger.debug("pos: {}, dist:{}".format(pos, self.ticks_to_mm(pos)))
+            logger.info("pos: {}, dist:{}".format(pos, self.ticks_to_mm(pos)))
             time.sleep(0.05)
         self.stop()
 
