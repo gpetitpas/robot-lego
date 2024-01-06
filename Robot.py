@@ -55,6 +55,8 @@ class Robot:
             pos = self.left_motor.get_position()
             print("pos: {}, dist:{}".format(pos, self.ticks_to_mm(pos)))
             time.sleep(0.05)
+        self.start(0,0)
+        time.sleep(0.05)
         self.stop()
         time.sleep(0.1)
         print("stopped")
