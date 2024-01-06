@@ -59,6 +59,7 @@ def check_encoders(robot, logger):
 def main():
     logger = configure_logging()
     logger.info("Log is working!")
+    # logger has to come first, apparently
     robot = Robot()
 
     robot.drive_distance(180)

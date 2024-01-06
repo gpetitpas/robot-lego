@@ -31,6 +31,7 @@ class Robot:
     def ticks_to_mm(self, encoder_ticks):
         return int(ticks_to_mm * encoder_ticks)
     
+    # This more or less works, although I think the motor is reporting inaccurate encoder measurments while in motion
     def drive_distance(self, distance):
         ticks = distance / ticks_to_mm
         print("driving for: {} distance, {} ticks".format(distance, ticks))
@@ -42,13 +43,13 @@ class Robot:
         print("target: {}".format(l_target_pos))
 
         # start motors
-        self.left_motor.start(-70)
+        self.start()
 
         # stop when left pos = start left + dist, when right
         while self.left_motor.get_position() > l_target_pos:
             print(self.left_motor.get_position())
             time.sleep(0.05)
-        self.left_motor.stop()
+        self.stop()
 
 
     # def drive_straight(self, seconds):
